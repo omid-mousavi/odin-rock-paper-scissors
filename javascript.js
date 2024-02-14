@@ -14,6 +14,27 @@ function capitilizeFirstLetter(yourWord) {
 }
 function playRound(playerSelection, computerSelection) {
   playerSelection = capitilizeFirstLetter(playerSelection);
+  if(playerSelection === computerSelection) {
+    return `You tie! ${playerSelection} is same as ${computerSelection}`;
+  }
+  
+  if(playerSelection === "Rock" && computerSelection === "Scissors") {
+    return `You won! ${playerSelection} beats ${computerSelection}`;
+  } else if(playerSelection === "Rock" && computerSelection === "Paper") {
+    return `You lost! ${computerSelection} beats ${playerSelection}`;
+  }
+
+  if(playerSelection === "Paper" && computerSelection === "Rock") {
+    return `You won! ${playerSelection} beats ${computerSelection}`;
+  } else if(playerSelection === "Paper" && computerSelection === "Scissors") {
+    return `You lost! ${computerSelection} beats ${playerSelection}`;
+  }
+
+  if(playerSelection === "Scissors" && computerSelection === "Rock") {
+    return `You lost! ${computerSelection} beats ${playerSelection}`;
+  } else if(playerSelection === "Scissors" && computerSelection === "Paper") {
+    return `You won! ${playerSelection} beats ${computerSelection}`;
+  }
 }
 function playGame() {
   

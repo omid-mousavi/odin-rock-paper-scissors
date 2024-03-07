@@ -41,17 +41,21 @@ function playRound(playerSelection) {
   }
 }
 
+function playAgain(event) {
+  globalComputerResult = 0, globalPlayerResult = 0;
+  headerTwo.remove();
+  currentResult.textContent = '';
+  yourScore.textContent = '0', computerScore.textContent = '0';
+  event.target.remove();
+}
 
 let globalPlayerResult = 0, globalComputerResult = 0; // global variables in order to access them everywhere
 
 function getFullResult(result) {
+  const resetGame = document.createElement('button');
+  resetGame.textContent = 'Play Again!';
+  resetGame.addEventListener('click', playAgain);
 
-  const currentResult = document.querySelector('.current-result');
-  const resultDiv = document.querySelector('.result-div');
-  const yourScore = document.querySelector('.your-score');
-  const computerScore = document.querySelector('.computer-score');
-  const headerTwo = document.createElement('h2');
-  
   yourScore.textContent = globalPlayerResult;
   computerScore.textContent = globalComputerResult;
 
@@ -62,10 +66,12 @@ function getFullResult(result) {
     headerTwo.style.color = '#00ff00';
     headerTwo.textContent = `In total, you won ${globalPlayerResult} times while computer won ${globalComputerResult} times! You won the game!`;
     resultDiv.appendChild(headerTwo);
+    resultDiv.appendChild(resetGame);
   } else if(globalComputerResult >= 5) {
     headerTwo.style.color = '#ff0000';
     headerTwo.textContent = `In total, computer won ${globalComputerResult} times while you won ${globalPlayerResult} times! You lost the game!`
     resultDiv.appendChild(headerTwo);
+    resultDiv.appendChild(resetGame);
   }
 }
 
@@ -85,6 +91,11 @@ function playGame(event) {
   getFullResult(result);
 }
 
+const resultDiv = document.querySelector('.result-div');
+const headerTwo = document.createElement('h2');
+const currentResult = document.querySelector('.current-result');
+const yourScore = document.querySelector('.your-score');
+const computerScore = document.querySelector('.computer-score');
 const rockButton = document.querySelector('.rock-button');
 const paperButton = document.querySelector('.paper-button');
 const scissorsButton = document.querySelector('.scissors-button');

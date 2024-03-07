@@ -13,7 +13,7 @@ button {
   background-color: #0a58ca;
   border: 0;
   border-radius: 30px;
-  width: 150px;
+  width: 120px; /* was 150 */
   height: 50px;
 }
 
@@ -21,6 +21,28 @@ button {
   height: 170px;
   display: flex;
   justify-content: space-evenly;
+}
+
+.result-div {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.score-div {
+  display: flex;
+  justify-content: space-around;
+  width: 630px;
+}
+
+.your-score {
+  color: #00ff00;
+}
+.computer-score {
+  color: #ff0000;
 }
 
 .button-item {

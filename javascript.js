@@ -41,17 +41,22 @@ function playRound(playerSelection) {
   }
 }
 
+
 let globalPlayerResult = 0, globalComputerResult = 0; // global variables in order to access them everywhere
 
 function getFullResult(result) {
 
+  const currentResult = document.querySelector('.current-result');
   const resultDiv = document.querySelector('.result-div');
-  const para = document.createElement('p');
+  const yourScore = document.querySelector('.your-score');
+  const computerScore = document.querySelector('.computer-score');
   const headerTwo = document.createElement('h2');
   
-  para.textContent = result;
+  yourScore.textContent = globalPlayerResult;
+  computerScore.textContent = globalComputerResult;
 
-  resultDiv.appendChild(para);
+  currentResult.textContent = result;
+
 
   if(globalPlayerResult >= 5) {
     headerTwo.style.color = '#00ff00';

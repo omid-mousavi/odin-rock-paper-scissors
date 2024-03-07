@@ -15,7 +15,7 @@ function capitilizeFirstLetter(yourWord) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = capitilizeFirstLetter(playerSelection);
+  // playerSelection = capitilizeFirstLetter(playerSelection.target.textContent);
   if(playerSelection === computerSelection) {
     return `You tie! ${playerSelection} is same as ${computerSelection}`;
   }
@@ -40,19 +40,26 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-  let playerResult = 0, computerResult = 0;
-  let playerSelection, computerSelection, result;
-  for(let counter = 1; counter <= 5; counter++) {
-    playerSelection = prompt("Your turn: ");
-    computerSelection = getComputerChoice();
-    result = playRound(playerSelection, computerSelection);
-    if(result.includes("won!")) {
-      playerResult++;
-    } else if(result.includes("lost!")) {
-      computerResult++;
-    }
-    console.log(result);
-  }
-  return (playerResult > computerResult) ? `In total, you won ${playerResult} times while computer won ${computerResult} times! You won the game!` : (computerResult > playerResult) ? `In total, computer won ${computerResult} times while you won ${playerResult} times! You lost the game!` : `In total, you won ${playerResult} times while computer won ${computerResult} times! You both tie!`;
+  // let playerResult = 0, computerResult = 0;
+  // let playerSelection, computerSelection, result;
+  // for(let counter = 1; counter <= 5; counter++) {
+  //   playerSelection = prompt("Your turn: ");
+  //   computerSelection = getComputerChoice();
+  //   result = playRound(playerSelection, computerSelection);
+  //   if(result.includes("won!")) {
+  //     playerResult++;
+  //   } else if(result.includes("lost!")) {
+  //     computerResult++;
+  //   }
+  //   console.log(result);
+  // }
+  // return (playerResult > computerResult) ? `In total, you won ${playerResult} times while computer won ${computerResult} times! You won the game!` : (computerResult > playerResult) ? `In total, computer won ${computerResult} times while you won ${playerResult} times! You lost the game!` : `In total, you won ${playerResult} times while computer won ${computerResult} times! You both tie!`;
 }
-console.log(playGame());
+
+const rockButton = document.querySelector('.rock-button');
+const paperButton = document.querySelector('.paper-button');
+const scissorsButton = document.querySelector('.scissors-button');
+
+rockButton.addEventListener('click', playRound);
+paperButton.addEventListener('click', playRound);
+scissorsButton.addEventListener('click', playRound);

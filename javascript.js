@@ -14,8 +14,10 @@ function capitilizeFirstLetter(yourWord) {
   return `${yourWord.toUpperCase().at(0)}${yourWord.toLowerCase().slice(1)}`;
 }
 
-function playRound(playerSelection, computerSelection) {
-  // playerSelection = capitilizeFirstLetter(playerSelection.target.textContent);
+function playRound(playerSelection) {
+  let computerSelection = getComputerChoice();
+  playerSelection = capitilizeFirstLetter(playerSelection);
+  
   if(playerSelection === computerSelection) {
     return `You tie! ${playerSelection} is same as ${computerSelection}`;
   }
@@ -39,27 +41,49 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function playGame() {
-  // let playerResult = 0, computerResult = 0;
-  // let playerSelection, computerSelection, result;
-  // for(let counter = 1; counter <= 5; counter++) {
-  //   playerSelection = prompt("Your turn: ");
-  //   computerSelection = getComputerChoice();
-  //   result = playRound(playerSelection, computerSelection);
-  //   if(result.includes("won!")) {
-  //     playerResult++;
-  //   } else if(result.includes("lost!")) {
-  //     computerResult++;
-  //   }
-  //   console.log(result);
-  // }
-  // return (playerResult > computerResult) ? `In total, you won ${playerResult} times while computer won ${computerResult} times! You won the game!` : (computerResult > playerResult) ? `In total, computer won ${computerResult} times while you won ${playerResult} times! You lost the game!` : `In total, you won ${playerResult} times while computer won ${computerResult} times! You both tie!`;
+let globalPlayerResult = 0, globalComputerResult = 0; // global variables in order to access them everywhere
+
+function getFullResult(result) {
+
+  const resultDiv = document.querySelector('.result-div');
+  const para = document.createElement('p');
+  const headerTwo = document.createElement('h2');
+  
+  para.textContent = result;
+
+  resultDiv.appendChild(para);
+
+  if(globalPlayerResult >= 5) {
+    headerTwo.style.color = '#00ff00';
+    headerTwo.textContent = `In total, you won ${globalPlayerResult} times while computer won ${globalComputerResult} times! You won the game!`;
+    resultDiv.appendChild(headerTwo);
+  } else if(globalComputerResult >= 5) {
+    headerTwo.style.color = '#ff0000';
+    headerTwo.textContent = `In total, computer won ${globalComputerResult} times while you won ${globalPlayerResult} times! You lost the game!`
+    resultDiv.appendChild(headerTwo);
+  }
+}
+
+function playGame(event) {
+  let playerSelection, result;
+
+  playerSelection = event.target.textContent; // get the button inner text
+
+  result = playRound(playerSelection);
+
+  if(result.includes("won!")) {
+    globalPlayerResult++;
+  } else if(result.includes("lost!")) {
+    globalComputerResult++;
+  }
+
+  getFullResult(result);
 }
 
 const rockButton = document.querySelector('.rock-button');
 const paperButton = document.querySelector('.paper-button');
 const scissorsButton = document.querySelector('.scissors-button');
 
-rockButton.addEventListener('click', playRound);
-paperButton.addEventListener('click', playRound);
-scissorsButton.addEventListener('click', playRound);
+rockButton.addEventListener('click', playGame);
+paperButton.addEventListener('click', playGame);
+scissorsButton.addEventListener('click', playGame);

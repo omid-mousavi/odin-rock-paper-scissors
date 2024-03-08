@@ -63,14 +63,14 @@ function getFullResult(result) {
   currentResult.textContent = result;
 
 
-  if(globalPlayerResult >= 5) {
+  if(globalPlayerResult >= 5 && (globalPlayerResult > globalComputerResult)) {
     headerTwo.style.color = '#00ff00';
     headerTwo.textContent = `In total, you won ${globalPlayerResult} times while computer won ${globalComputerResult} times! You won the game!`;
     if(document.getElementById('playAgainExist') === null) {
       resultDiv.appendChild(headerTwo);
       resultDiv.appendChild(resetGame);
     }
-  } else if(globalComputerResult >= 5) {
+  } else if(globalComputerResult >= 5 && (globalPlayerResult < globalComputerResult)) {
     headerTwo.style.color = '#ff0000';
     headerTwo.textContent = `In total, computer won ${globalComputerResult} times while you won ${globalPlayerResult} times! You lost the game!`
     if(document.getElementById('playAgainExist') === null) {

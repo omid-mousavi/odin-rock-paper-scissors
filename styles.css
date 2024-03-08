@@ -36,7 +36,7 @@ button {
 .score-div {
   display: flex;
   justify-content: space-around;
-  width: 630px;
+  width: 530px; /* was 630 */
 }
 
 .your-score {

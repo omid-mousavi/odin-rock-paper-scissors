@@ -5,7 +5,7 @@ body {
 
 * {
   font-family: 'Courier New', Courier, monospace;
-  background-color: #000000;
+  background-color: #272727;
   color: #ffffff;
 }
 
@@ -15,6 +15,7 @@ button {
   border-radius: 30px;
   width: 120px; /* was 150 */
   height: 50px;
+  cursor: pointer;
 }
 
 .buttons-section {

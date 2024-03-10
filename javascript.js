@@ -14,10 +14,37 @@ function capitilizeFirstLetter(yourWord) {
   return `${yourWord.toUpperCase().at(0)}${yourWord.toLowerCase().slice(1)}`;
 }
 
+function setImage(playerSelection, computerSelection) {
+  switch(playerSelection) {
+    case 'Rock':
+      youImg.src = 'fist.png';
+      break;
+    case 'Paper':
+      youImg.src = 'hello.png';
+      break;
+    case 'Scissors':
+      youImg.src = 'letter-v.png';
+      break;
+  }
+  switch(computerSelection) {
+    case 'Rock':
+      computerImg.src = 'fist.png';
+      break;
+    case 'Paper':
+      computerImg.src = 'hello.png';
+      break;
+    case 'Scissors':
+      computerImg.src = 'letter-v.png';
+      break;
+  }
+}
+
 function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
   playerSelection = capitilizeFirstLetter(playerSelection);
   
+  setImage(playerSelection, computerSelection);
+
   if(playerSelection === computerSelection) {
     return `You tie! ${playerSelection} is same as ${computerSelection}`;
   }
@@ -102,6 +129,8 @@ const computerScore = document.querySelector('.computer-score');
 const rockButton = document.querySelector('.rock-button');
 const paperButton = document.querySelector('.paper-button');
 const scissorsButton = document.querySelector('.scissors-button');
+const youImg = document.querySelector('#you-img');
+const computerImg = document.querySelector('#computer-img');
 
 let globalPlayerResult = 0, globalComputerResult = 0; // global variables in order to access them everywhere
 

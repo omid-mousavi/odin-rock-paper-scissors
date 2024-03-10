@@ -49,8 +49,6 @@ function playAgain(event) {
   event.target.remove();
 }
 
-let globalPlayerResult = 0, globalComputerResult = 0; // global variables in order to access them everywhere
-
 function getFullResult(result) {
   const resetGame = document.createElement('button');
   resetGame.textContent = 'Play Again!';
@@ -104,6 +102,8 @@ const computerScore = document.querySelector('.computer-score');
 const rockButton = document.querySelector('.rock-button');
 const paperButton = document.querySelector('.paper-button');
 const scissorsButton = document.querySelector('.scissors-button');
+
+let globalPlayerResult = 0, globalComputerResult = 0; // global variables in order to access them everywhere
 
 rockButton.addEventListener('click', playGame);
 paperButton.addEventListener('click', playGame);

@@ -73,6 +73,7 @@ function playAgain(event) {
   headerTwo.remove();
   currentResult.textContent = '';
   yourScore.textContent = '0', computerScore.textContent = '0';
+  youImg.src = computerImg.src = 'question-mark.png';
   event.target.remove();
 }
 

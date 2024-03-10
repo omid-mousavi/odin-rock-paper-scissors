@@ -53,6 +53,21 @@ button {
   justify-content: space-between;
 }
 
+.result-img {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+}
+
+.you-div, .computer-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  
+}
+
 img {
   width: 100px;
   height: auto;

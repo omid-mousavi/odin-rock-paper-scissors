@@ -15,7 +15,7 @@ body {
   justify-content: space-between;
 }
 
-.footer {
+.footer, a {
   background-color: #333333;
   font-size: 14px;
   text-align: center;
